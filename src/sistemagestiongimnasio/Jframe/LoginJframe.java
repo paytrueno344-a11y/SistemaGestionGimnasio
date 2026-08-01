@@ -6,13 +6,14 @@ package sistemagestiongimnasio.Jframe;
 
 import java.awt.Color;
 import javax.swing.JOptionPane;
+import sistemagestiongimnasio.reglas.negocio.UsuarioReglasNegocio;
 
 /**
  *
  * @author Luis LB
  */
 public class LoginJframe extends javax.swing.JFrame {
-    
+
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(LoginJframe.class.getName());
 
     /**
@@ -20,9 +21,9 @@ public class LoginJframe extends javax.swing.JFrame {
      */
     public LoginJframe() {
         initComponents();
-        
+
         lblMensajeError.setVisible(false);
-        
+
     }
 
     /**
@@ -37,7 +38,7 @@ public class LoginJframe extends javax.swing.JFrame {
         btnCerrarLogin = new javax.swing.JButton();
         lblLoginLogo = new javax.swing.JLabel();
         lblMensajeError = new javax.swing.JLabel();
-        txtIngresaPassword = new javax.swing.JTextField();
+        txtIngresaUsuario = new javax.swing.JTextField();
         pssCasillaContrasenia = new javax.swing.JPasswordField();
         btnValidarLogin = new javax.swing.JButton();
         cbxMostrarContrasenia = new javax.swing.JCheckBox();
@@ -63,18 +64,18 @@ public class LoginJframe extends javax.swing.JFrame {
         lblMensajeError.setText("Son incorrecto usuario o password");
         getContentPane().add(lblMensajeError, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 310, -1, -1));
 
-        txtIngresaPassword.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        txtIngresaPassword.setForeground(new java.awt.Color(0, 118, 221));
-        txtIngresaPassword.setText("Ingresa Usuario");
-        txtIngresaPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+        txtIngresaUsuario.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        txtIngresaUsuario.setForeground(new java.awt.Color(0, 118, 221));
+        txtIngresaUsuario.setText("Ingresa Usuario");
+        txtIngresaUsuario.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusGained(java.awt.event.FocusEvent evt) {
-                txtIngresaPasswordFocusGained(evt);
+                txtIngresaUsuarioFocusGained(evt);
             }
             public void focusLost(java.awt.event.FocusEvent evt) {
-                txtIngresaPasswordFocusLost(evt);
+                txtIngresaUsuarioFocusLost(evt);
             }
         });
-        getContentPane().add(txtIngresaPassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, 303, -1));
+        getContentPane().add(txtIngresaUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 350, 303, -1));
 
         pssCasillaContrasenia.setForeground(new java.awt.Color(0, 118, 221));
         pssCasillaContrasenia.addFocusListener(new java.awt.event.FocusAdapter() {
@@ -107,92 +108,99 @@ public class LoginJframe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCerrarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarLoginActionPerformed
-        
-        int a = JOptionPane.showConfirmDialog(null, "Realmente deseas salir del programa" , "Selecciona", JOptionPane.YES_NO_OPTION);
-        if(a==0)
-        {
+
+        int a = JOptionPane.showConfirmDialog(null, "Realmente deseas salir del programa", "Selecciona", JOptionPane.YES_NO_OPTION);
+        if (a == 0) {
             System.exit(0);
         }
-        
+
     }//GEN-LAST:event_btnCerrarLoginActionPerformed
 
-    private void txtIngresaPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresaPasswordFocusGained
+    private void txtIngresaUsuarioFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresaUsuarioFocusGained
 
         lblMensajeError.setVisible(false);
-        if(txtIngresaPassword.getText().equals("Ingresa Usuario"))
-        {
-        
-            txtIngresaPassword.setText("");
-            txtIngresaPassword.setForeground(new Color(0,118,221));
-        
+        if (txtIngresaUsuario.getText().equals("Ingresa Usuario")) {
+
+            txtIngresaUsuario.setText("");
+            txtIngresaUsuario.setForeground(new Color(0, 118, 221));
+
         }
 
 
-        
-    }//GEN-LAST:event_txtIngresaPasswordFocusGained
+    }//GEN-LAST:event_txtIngresaUsuarioFocusGained
 
-    private void txtIngresaPasswordFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresaPasswordFocusLost
-        
+    private void txtIngresaUsuarioFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIngresaUsuarioFocusLost
+
         lblMensajeError.setVisible(false);
-        if(txtIngresaPassword.getText().equals(""))
-        {
-        
-            txtIngresaPassword.setText("Ingresa Usuario");
-            txtIngresaPassword.setForeground(new Color(0,118,221));
+        if (txtIngresaUsuario.getText().equals("")) {
+
+            txtIngresaUsuario.setText("Ingresa Usuario");
+            txtIngresaUsuario.setForeground(new Color(0, 118, 221));
         }
-        
-    }//GEN-LAST:event_txtIngresaPasswordFocusLost
+
+    }//GEN-LAST:event_txtIngresaUsuarioFocusLost
 
     private void pssCasillaContraseniaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pssCasillaContraseniaFocusGained
-        
+
         lblMensajeError.setVisible(false);
-        if(pssCasillaContrasenia.getText().equals("Ingresa Usuario"))
-        {
-        
+        if (pssCasillaContrasenia.getText().equals("Ingresa Usuario")) {
+
             pssCasillaContrasenia.setText("");
-            pssCasillaContrasenia.setForeground(new Color(0,118,221));
-        
+            pssCasillaContrasenia.setForeground(new Color(0, 118, 221));
+
         }
     }//GEN-LAST:event_pssCasillaContraseniaFocusGained
 
     private void pssCasillaContraseniaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_pssCasillaContraseniaFocusLost
-        
+
         lblMensajeError.setVisible(false);
-        if(pssCasillaContrasenia.getText().equals("Ingresa Usuario"))
-        {
-        
+        if (pssCasillaContrasenia.getText().equals("Ingresa Usuario")) {
+
             pssCasillaContrasenia.setText("");
-            pssCasillaContrasenia.setForeground(new Color(0,118,221));
-        
+            pssCasillaContrasenia.setForeground(new Color(0, 118, 221));
+
         }
-        
-        
+
+
     }//GEN-LAST:event_pssCasillaContraseniaFocusLost
 
     private void btnValidarLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnValidarLoginActionPerformed
-       
-        if(txtIngresaPassword.getText().equals("gms") && pssCasillaContrasenia.getText().equals("admin"))
-        {
-            setVisible(false);
-            new BienvenidaJframe().setVisible(true);
-        } else lblMensajeError.setVisible(true);
+
+        String usuario = txtIngresaUsuario.getText();
+        String password = pssCasillaContrasenia.getText();
         
+        
+        UsuarioReglasNegocio urn = new UsuarioReglasNegocio();
+        boolean validaUsuario = urn.validaUsuario(usuario, password);
+        if(validaUsuario){
+        JOptionPane.showMessageDialog(null, "Bienvenido");
+        
+        }else{
+            JOptionPane.showMessageDialog(null, "Usuario y Password incorrect");
+        }
+        
+        
+        
+        
+//        if (txtIngresaUsuario.getText().equals("gms") && pssCasillaContrasenia.getText().equals("admin")) {
+//            setVisible(false);
+//            new BienvenidaJframe().setVisible(true);
+//        } else {
+//            lblMensajeError.setVisible(true);
+//        }
+
     }//GEN-LAST:event_btnValidarLoginActionPerformed
 
     private void cbxMostrarContraseniaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbxMostrarContraseniaActionPerformed
-        
-        if(cbxMostrarContrasenia.isSelected())
-        {
-        
-        pssCasillaContrasenia.setEchoChar((char)0);
+
+        if (cbxMostrarContrasenia.isSelected()) {
             
-        } else
-        {
-        
+            pssCasillaContrasenia.setEchoChar((char) 0);
+        } else {
+            
             pssCasillaContrasenia.setEchoChar('*');
-        
         }
-        
+
     }//GEN-LAST:event_cbxMostrarContraseniaActionPerformed
 
     /**
@@ -228,6 +236,6 @@ public class LoginJframe extends javax.swing.JFrame {
     private javax.swing.JLabel lblLoginLogo;
     private javax.swing.JLabel lblMensajeError;
     private javax.swing.JPasswordField pssCasillaContrasenia;
-    private javax.swing.JTextField txtIngresaPassword;
+    private javax.swing.JTextField txtIngresaUsuario;
     // End of variables declaration//GEN-END:variables
 }
